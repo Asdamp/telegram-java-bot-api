@@ -1,0 +1,16 @@
+group 'com.asdamp.telegram.java.botapi'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'com.google.code.gson:gson:2.+'
+
+}
