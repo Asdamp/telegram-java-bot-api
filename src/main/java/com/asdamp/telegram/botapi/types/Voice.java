@@ -3,14 +3,9 @@ package com.asdamp.telegram.botapi.types;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * This object represents an audio file (voice note).
- *
- * Any getters labeled <i>optional</i> might return a default value (such as {@code null}).
- *
- * @see <a href="https://core.telegram.org/bots/api#audio">https://core.telegram.org/bots/api#audio</a>
+ * Created by Antonio on 30/08/2015.
  */
-public class Audio {
-
+public class Voice {
     @SerializedName("file_id")
     private String fileId;
 
@@ -19,13 +14,6 @@ public class Audio {
 
     @SerializedName("mime_type")
     private String mimeType;
-
-    @SerializedName("performer")
-    private String performer;
-
-    @SerializedName("title")
-    private String title;
-
 
     @SerializedName("file_size")
     private int fileSize;
