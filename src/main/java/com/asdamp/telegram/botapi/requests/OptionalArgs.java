@@ -14,6 +14,8 @@ public class OptionalArgs {
     private int limit = -1;
     private int timeout = -1;
     private int duration = -1;
+    private String performer=null;
+    private String title=null;
     private String caption = null;
 
     private Map<String, String> options;
@@ -61,8 +63,8 @@ public class OptionalArgs {
         return this;
     }
 
-    public OptionalArgs replyToMessageId(int replyToMessageId) {
-        this.replyToMessageId = replyToMessageId;
+    public OptionalArgs replyToMessageId(int messageId) {
+        this.replyToMessageId = messageId;
         return this;
     }
 
