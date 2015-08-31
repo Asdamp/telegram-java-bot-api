@@ -17,7 +17,7 @@ public class requesttest {
 	    @Before
 	    public void setUp() throws Exception {
 	        api = new TelegramApi(TOKEN);
-	        requestExecutor = ApiRequestExecutor.getSynchronousExecutor();
+	        requestExecutor = ApiRequestExecutor.getInstance();
 	    }
 	    
 	    @Test
@@ -25,7 +25,7 @@ public class requesttest {
 	 
 	        GetMeRequest request = new GetMeRequest();
 
-	        User user = requestExecutor.execute(api, request).getResult();
+	        User user = requestExecutor.execute(api, request);
 	        System.out.println(user);
 	    }
 	    
@@ -34,7 +34,7 @@ public class requesttest {
 	 
 	        SetWebHookRequest request = new SetWebHookRequest("Your servlet address");
 
-	        Boolean user = requestExecutor.execute(api, request).getResult();
+	        Boolean user = requestExecutor.execute(api, request);
 	        System.out.println(user);
 	    }
 }
