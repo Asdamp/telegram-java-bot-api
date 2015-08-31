@@ -12,7 +12,7 @@ public class ApiRequestExecutor {
     // Non instantiable/subclassable
     private ApiRequestExecutor() {
     }
-    public ApiRequestExecutor getInstance(){
+    public static ApiRequestExecutor getInstance(){
         if(requestExecutor==null){
             requestExecutor=new ApiRequestExecutor();
         }
