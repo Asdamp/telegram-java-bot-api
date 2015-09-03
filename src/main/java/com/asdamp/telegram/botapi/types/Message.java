@@ -40,6 +40,9 @@ public class Message {
     @SerializedName("audio")
     private Audio audio;
 
+    @SerializedName("voice")
+    private Voice voice;
+
     @SerializedName("document")
     private Document document;
 
@@ -154,6 +157,14 @@ public class Message {
         return audio;
     }
 
+    /**
+     * <i>Optional.</i>
+     *
+     * @return Message is a voice file, information about the file
+     */
+    public Voice getVoice() {
+        return voice;
+    }
     /**
      * <i>Optional.</i>
      *
@@ -292,6 +303,9 @@ public class Message {
         else if (audio != null)
             type = Type.AUDIO;
 
+        else if (voice != null)
+            type = Type.VOICE;
+
         else if (document != null)
             type = Type.DOCUMENT;
 
@@ -331,14 +345,14 @@ public class Message {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Message{");
-        sb.append("type=").append(type);
-        sb.append(", messageId=").append(messageId);
-        sb.append(", from=").append(from);
-        sb.append(", date=").append(date);
-        sb.append(", chat=").append(chat);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Message{";
+        sb=sb+"type="+type;
+        sb=sb+", messageId="+messageId;
+        sb=sb+", from="+from;
+        sb=sb+", date="+date;
+        sb=sb+", chat="+chat;
+        sb=sb+'}';
+        return sb;
     }
 
     /**
@@ -348,6 +362,7 @@ public class Message {
         TEXT,
         DOCUMENT,
         AUDIO,
+        VOICE,
         PHOTO,
         STICKER,
         VIDEO,

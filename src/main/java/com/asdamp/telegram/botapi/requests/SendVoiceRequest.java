@@ -11,26 +11,26 @@ public class SendVoiceRequest implements ApiRequest<Message> {
     private Map<String, String> args = new HashMap<>();
     private RequestStrategy requestStrategy;
 
-    public SendVoiceRequest(int chatId, File audioFile) {
-        this(chatId, audioFile, null);
+    public SendVoiceRequest(int chatId, File voiceFile) {
+        this(chatId, voiceFile, null);
     }
 
-    public SendVoiceRequest(int chatId, File audioFile, OptionalArgs optionalArgs) {
+    public SendVoiceRequest(int chatId, File voiceFile, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
 
         if (optionalArgs != null)
             args.putAll(optionalArgs.options());
 
-        requestStrategy = new MultipartStrategy(audioFile, "audio");
+        requestStrategy = new MultipartStrategy(voiceFile, "voice");
     }
 
-    public SendVoiceRequest(int chatId, String audioString) {
-        this(chatId, audioString, null);
+    public SendVoiceRequest(int chatId, String voiceString) {
+        this(chatId, voiceString, null);
     }
 
-    public SendVoiceRequest(int chatId, String audioString, OptionalArgs optionalArgs) {
+    public SendVoiceRequest(int chatId, String voiceString, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
-        args.put("audio", audioString);
+        args.put("voice", voiceString);
 
         if (optionalArgs != null)
             args.putAll(optionalArgs.options());
@@ -40,7 +40,7 @@ public class SendVoiceRequest implements ApiRequest<Message> {
 
     @Override
     public String getMethodName() {
-        return "sendAudio";
+        return "sendVoice";
     }
 
     @Override
@@ -60,7 +60,7 @@ public class SendVoiceRequest implements ApiRequest<Message> {
 
     @Override
     public String toString() {
-        return "SendAudioRequest{" +
+        return "SendVoiceRequest{" +
                 "args=" + args +
                 ", requestStrategy=" + requestStrategy +
                 '}';
