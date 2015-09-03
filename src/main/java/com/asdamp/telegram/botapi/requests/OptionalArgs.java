@@ -47,6 +47,13 @@ public class OptionalArgs {
         if (caption != null)
             options.put("caption", caption);
 
+        if(performer!=null)
+            options.put("performer", performer);
+
+        if(title!=null){
+            options.put("title", title);
+        }
+
         return options;
     }
 
@@ -95,6 +102,16 @@ public class OptionalArgs {
 
     public OptionalArgs caption(String caption) {
         this.caption = caption;
+        return this;
+    }
+
+    public OptionalArgs title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public OptionalArgs performer(String performer) {
+        this.performer = performer;
         return this;
     }
 }
