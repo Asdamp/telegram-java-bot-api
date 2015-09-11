@@ -3,16 +3,16 @@
 import java.io.File;
 import java.net.URL;
 
-import com.asdamp.telegram.botapi.requests.OptionalArgs;
-import com.asdamp.telegram.botapi.requests.SendAudioRequest;
-import com.asdamp.telegram.botapi.types.Message;
+import com.antonioaltieri.telegram.botapi.requests.OptionalArgs;
+import com.antonioaltieri.telegram.botapi.requests.SendAudioRequest;
+import com.antonioaltieri.telegram.botapi.types.Message;
 import org.junit.*;
 import static org.junit.Assert.*;
 
 
 
-import com.asdamp.telegram.botapi.requests.ApiRequestExecutor;
-import com.asdamp.telegram.botapi.requests.TelegramApi;
+import com.antonioaltieri.telegram.botapi.requests.ApiRequestExecutor;
+import com.antonioaltieri.telegram.botapi.requests.TelegramApi;
 
 
 public class audiotest {

@@ -1,9 +1,30 @@
-group 'com.asdamp.telegram.java.botapi'
-version '1.0'
-
 apply plugin: 'java'
+apply plugin: 'signing'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+group 'com.antonioaltieri'
+version '1.1'
 
 sourceCompatibility = 1.7
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
 
 repositories {
     mavenCentral()
@@ -13,4 +34,49 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'com.google.code.gson:gson:2.+'
 
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Telegram Java bot api'
+                packaging 'jar'
+                // optionally artifactId can be defined here
+                description 'A simple Telegram bot API.'
+                url 'https://github.com/Asdamp/telegram-java-bot-api'
+
+                scm {
+                    connection 'https://github.com/Asdamp/telegram-java-bot-api.git'
+                    developerConnection 'https://github.com/Asdamp/telegram-java-bot-api.git'
+                    url 'https://github.com/Asdamp/telegram-java-bot-api'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'Asdamp'
+                        name 'Antonio Altieri'
+                        email 'Antonio.danilo92@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,13 +1,11 @@
-import static org.junit.Assert.*;
-
-import com.asdamp.telegram.botapi.requests.SetWebHookRequest;
+import com.antonioaltieri.telegram.botapi.requests.SetWebHookRequest;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.asdamp.telegram.botapi.requests.ApiRequestExecutor;
-import com.asdamp.telegram.botapi.requests.GetMeRequest;
-import com.asdamp.telegram.botapi.requests.TelegramApi;
-import com.asdamp.telegram.botapi.types.User;
+import com.antonioaltieri.telegram.botapi.requests.ApiRequestExecutor;
+import com.antonioaltieri.telegram.botapi.requests.GetMeRequest;
+import com.antonioaltieri.telegram.botapi.requests.TelegramApi;
+import com.antonioaltieri.telegram.botapi.types.User;
 
 public class requesttest {
 	    protected final static String TOKEN = TestToken.TOKEN;

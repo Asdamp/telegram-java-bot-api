@@ -3,8 +3,10 @@
 import java.io.File;
 import java.net.URL;
 
-import com.asdamp.telegram.botapi.requests.*;
-import com.asdamp.telegram.botapi.types.Message;
+import com.antonioaltieri.telegram.botapi.requests.ApiRequestExecutor;
+import com.antonioaltieri.telegram.botapi.requests.SendVoiceRequest;
+import com.antonioaltieri.telegram.botapi.requests.TelegramApi;
+import com.antonioaltieri.telegram.botapi.types.Message;
 import org.junit.*;
 import static org.junit.Assert.*;
 
