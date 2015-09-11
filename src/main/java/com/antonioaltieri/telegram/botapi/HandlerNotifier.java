@@ -40,7 +40,7 @@ public class HandlerNotifier {
             } else if (method.isAnnotationPresent(CommandHandler.class)) {
                 logger.info("Found CommandHandler: " + method.getName());
                 CommandHandler commandHandlerAnnotation = method.getAnnotation(CommandHandler.class);
-                messageHandlers.add(new CommandHandlerFilter(commandHandlerAnnotation.value(), method));
+                messageHandlers.add(0,new CommandHandlerFilter(commandHandlerAnnotation.value(), method));
             } else if (method.isAnnotationPresent(DefaultHandler.class)) {
                 logger.info("Found DefaultHandler: " + method.getName());
                 defaultHandler = method;
