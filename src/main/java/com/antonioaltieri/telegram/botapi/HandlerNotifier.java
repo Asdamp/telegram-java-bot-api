@@ -125,7 +125,12 @@ public class HandlerNotifier {
         private String extractCommand(Message message) {
             if (isCommand(message)) {
                 String text = message.getText();
-                return text.split(" ")[0].split("@")[0].substring(1);
+                String cmdTrg[]=text.split(" ")[0].split("@");
+                String cmd=cmdTrg[0].substring(1);
+                String target=null;
+                if(cmdTrg.length>=2) target=cmdTrg[1];
+                if(target==null || target.equalsIgnoreCase(Properties.BotUser.getUsername()))
+                return cmd;
             }
             return null;
         }

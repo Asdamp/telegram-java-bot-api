@@ -63,8 +63,6 @@ public final class TelegramApi {
 
             connection.setDoInput(true);
             connection.setDoOutput(true);
-            //connection.setConnectTimeout(100000);
-            //connection.setReadTimeout(100000);
             DataOutputStream output = new DataOutputStream(connection.getOutputStream());
             output.write(query.getBytes());
             output.close();

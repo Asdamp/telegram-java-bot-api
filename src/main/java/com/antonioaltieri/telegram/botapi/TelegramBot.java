@@ -16,14 +16,12 @@ import java.util.logging.Logger;
  */
 abstract public class TelegramBot {
 
-    private static final Logger logger = Logger.getLogger(com.antonioaltieri.telegram.botapi.TelegramBot.class.getName());
+    private static final Logger logger = Logger.getLogger(TelegramBot.class.getName());
 
     private TelegramApi api;
-    private boolean running = false;
     private int lastUpdateId = 0;
     private ApiRequestExecutor requestExecutor;
-    private com.antonioaltieri.telegram.botapi.HandlerNotifier handlerNotifier;
-    private boolean sendAsync = true;
+    private HandlerNotifier handlerNotifier;
 
 
 
@@ -36,6 +34,10 @@ abstract public class TelegramBot {
     public TelegramBot(String botToken) {
         api = new TelegramApi(botToken);
         handlerNotifier = new HandlerNotifier(this);
+        Properties.Token=botToken;
+        User bot=this.getMe();
+        if(bot==null) throw new ApiException("Telegram is not responding. Please check that you have passed the correct botToken");
+        Properties.BotUser=this.getMe();
     }
 
     /**
@@ -44,7 +46,6 @@ abstract public class TelegramBot {
     public final void start() {
         logger.info("Starting");
         requestExecutor = ApiRequestExecutor.getInstance();
-        running=true;
         onStart();
     }
 
@@ -56,7 +57,6 @@ abstract public class TelegramBot {
      * Stops the bot.
      */
     public final void stop() {
-        running=false;
         onStop();
     }
 
@@ -410,10 +410,10 @@ abstract public class TelegramBot {
     }
     private Message processUpdate(Update update) {
         Message msg=null;
-        //if (update.getUpdateId() > lastUpdateId){
+        if (update.getUpdateId() > lastUpdateId){
             lastUpdateId = update.getUpdateId();
             msg=update.getMessage();
-        //}
+        }
 
         return msg;
     }

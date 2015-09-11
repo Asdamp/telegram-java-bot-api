@@ -3,8 +3,8 @@ apply plugin: 'signing'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
-group 'com.antonioaltieri'
-version '1.1'
+group 'com.antonioaltieri.telegram'
+version '1.1.1'
 
 sourceCompatibility = 1.7
 

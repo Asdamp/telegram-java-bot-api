@@ -27,12 +27,12 @@ public class requesttest {
 	        System.out.println(user);
 	    }
 	    
-	    @Test
+	  /*  @Test
 	    public void setWebhookTest() throws Exception{
 	 
 	        SetWebHookRequest request = new SetWebHookRequest("Your servlet address");
 
 	        Boolean user = requestExecutor.execute(api, request);
 	        System.out.println(user);
-	    }
+	    }*/
 }
