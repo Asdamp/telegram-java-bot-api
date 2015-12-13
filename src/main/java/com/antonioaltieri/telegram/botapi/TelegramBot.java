@@ -381,6 +381,10 @@ abstract public class TelegramBot {
         return sendMessage(message.getChat().getId(), text, optionalArgs);
     }
 
+    public final boolean setWebHook(String servletAddress){
+        SetWebHookRequest request = new SetWebHookRequest(servletAddress);
+        return requestExecutor.execute(api, request);
+    }
     /**
      * This method is called when a new message has arrived.
      * It can safely be overridden by subclasses.
