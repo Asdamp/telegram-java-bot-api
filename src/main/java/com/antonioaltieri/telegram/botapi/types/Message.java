@@ -79,6 +79,18 @@ public class Message {
     @SerializedName("group_chat_created")
     private boolean groupChatCreated;
 
+    @SerializedName("super_group_chat_created")
+    private boolean superGroupChatCreated;
+
+    @SerializedName("channel_chat_created")
+    private boolean channelChatCreated;
+
+    @SerializedName("migrate_to_chat_id")
+    private boolean migrateToChatID;
+
+    @SerializedName("migrate_from_chat_id")
+    private boolean migrateFromChatID;
+
     @SerializedName("caption")
     private String caption;
 
@@ -106,7 +118,7 @@ public class Message {
     }
 
     /**
-     * @return Conversation the message belongs to — {@link User} in case of a private message, {@link GroupChat} in case of a group
+     * @return Conversation the message belongs to
      */
     public Chat getChat() {
         return chat;
