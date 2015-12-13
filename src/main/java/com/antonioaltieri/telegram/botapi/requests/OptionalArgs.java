@@ -17,7 +17,7 @@ public class OptionalArgs {
     private String performer=null;
     private String title=null;
     private String caption = null;
-
+    private String parse_mode =null;
     private Map<String, String> options;
 
     public Map<String, String> options() {
@@ -53,7 +53,9 @@ public class OptionalArgs {
         if(title!=null){
             options.put("title", title);
         }
-
+        if(parse_mode!=null){
+            options.put("parse_mode", parse_mode);
+        }
         return options;
     }
 
@@ -65,53 +67,58 @@ public class OptionalArgs {
         options.put(key, String.valueOf(i));
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs disableWebPagePreview() {
+    public OptionalArgs disableWebPagePreview() {
         this.disableWebPagePreview = true;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs replyToMessageId(int messageId) {
+    public OptionalArgs replyToMessageId(int messageId) {
         this.replyToMessageId = messageId;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs replyMarkup(ReplyMarkup replyMarkup) {
+    public OptionalArgs replyMarkup(ReplyMarkup replyMarkup) {
         this.replyMarkup = replyMarkup;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs offset(int offset) {
+    public OptionalArgs offset(int offset) {
         this.offset = offset;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs limit(int limit) {
+    public OptionalArgs limit(int limit) {
         this.limit = limit;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs timeout(int timeout) {
+    public OptionalArgs timeout(int timeout) {
         this.timeout = timeout;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs duration(int duration) {
+    public OptionalArgs duration(int duration) {
         this.duration = duration;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs caption(String caption) {
+    public OptionalArgs caption(String caption) {
         this.caption = caption;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs title(String title) {
+    public OptionalArgs title(String title) {
         this.title = title;
         return this;
     }
 
-    public com.antonioaltieri.telegram.botapi.requests.OptionalArgs performer(String performer) {
+    public OptionalArgs performer(String performer) {
         this.performer = performer;
+        return this;
+    }
+
+    public OptionalArgs parseMode(String parseMode) {
+        this.parse_mode = parseMode;
         return this;
     }
 }

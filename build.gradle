@@ -4,22 +4,24 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 group 'com.antonioaltieri.telegram'
-version '1.1.1'
+version '1.2'
 
 sourceCompatibility = 1.7
 
-task javadocJar(type: Jar) {
+task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
-    from javadoc
+    from 'build/docs/javadoc'
 }
 
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
     from sourceSets.main.allSource
+    classifier = 'sources'
 }
 
 artifacts {
-    archives javadocJar, sourcesJar
+    archives jar
+    archives javadocJar
+    archives sourcesJar
 }
 
 signing {
@@ -32,7 +34,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'com.google.code.gson:gson:2.+'
+    compile 'com.google.code.gson:gson:2.4'
 
 }
 
@@ -66,6 +68,8 @@ uploadArchives {
                     license {
                         name 'The Apache License, Version 2.0'
                         url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+
                     }
                 }
 

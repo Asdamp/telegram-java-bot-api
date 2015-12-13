@@ -35,9 +35,7 @@ abstract public class TelegramBot {
         api = new TelegramApi(botToken);
         handlerNotifier = new HandlerNotifier(this);
         Properties.Token=botToken;
-        User bot=this.getMe();
-        if(bot==null) throw new ApiException("Telegram is not responding. Please check that you have passed the correct botToken");
-        Properties.BotUser=this.getMe();
+
     }
 
     /**
@@ -46,6 +44,9 @@ abstract public class TelegramBot {
     public final void start() {
         logger.info("Starting");
         requestExecutor = ApiRequestExecutor.getInstance();
+        User bot=this.getMe();
+        if(bot==null) throw new ApiException("Telegram is not responding. Please check that you have passed the correct botToken");
+        Properties.BotUser=this.getMe();
         onStart();
     }
 
