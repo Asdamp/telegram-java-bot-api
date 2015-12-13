@@ -1,12 +1,9 @@
 package com.antonioaltieri.telegram.botapi.types;
 
-import com.antonioaltieri.telegram.botapi.types.GroupChat;
-import com.antonioaltieri.telegram.botapi.types.User;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Represents a chat.
- * This might be a chat with a {@link User} or a {@link GroupChat}
  */
 public class Chat {
 
@@ -15,6 +12,9 @@ public class Chat {
 
     @SerializedName("first_name")
     private String firstName;
+
+    @SerializedName("type")
+    private String type;
 
     @SerializedName("last_name")
     private String lastName;
@@ -29,16 +29,27 @@ public class Chat {
      * @return Whether this is a chat with a {@link User}
      */
     public boolean isUser() {
-        return title == null;
+        return type.equals(ChatTypes.PRIVATE);
     }
 
     /**
-     * @return Whether this is a {@link GroupChat}
+     * @return Whether this is a Group Chat
      */
     public boolean isGroupChat() {
-        return !isUser();
+        return type.equals(ChatTypes.GROUP);
     }
-
+    /**
+     * @return Whether this is a SuperGroup Chat
+     */
+    public boolean isSuperGroupChat() {
+        return type.equals(ChatTypes.SUPERGROUP);
+    }
+    /**
+     * @return Whether this is a Channel Chat
+     */
+    public boolean isChannelChat() {
+        return type.equals(ChatTypes.CHANNEL);
+    }
     /**
      * @return Unique identifier for this chat
      */
@@ -49,7 +60,6 @@ public class Chat {
     /**
      * Returns this chat as a {@link User}.
      * Before invoking, check whether this chat is actually a chat with a user
-     * by calling {@link com.antonioaltieri.telegram.botapi.types.Chat#isUser()}.
      *
      * @return This chat as a {@link User} object
      */
@@ -57,22 +67,15 @@ public class Chat {
         return new User(id, firstName, username, lastName);
     }
 
-    /**
-     * Returns this chat as a {@link GroupChat}.
-     * Before invoking this method, check whether this chat is actually a group chat
-     * by calling {@link com.antonioaltieri.telegram.botapi.types.Chat#isGroupChat()}.
-     *
-     * @return This chat as a {@link GroupChat} object
-     */
-    public GroupChat asGroupChat() {
-        return new GroupChat(id, title);
-    }
+
 
     @Override
     public String toString() {
         if (isUser())
             return "Chat {" + asUser().toString() + "}";
-        else
-            return "Chat {" + asGroupChat().toString() + "}";
+        //TODO completare il toString
+        return null;
     }
+
+
 }
