@@ -13,8 +13,16 @@ public final class SendMessageRequest implements ApiRequest<Message> {
         this(chatId, text, null);
     }
 
+    public SendMessageRequest(String chatId, String text) {
+        this(chatId, text, null);
+    }
+
     public SendMessageRequest(int chatId, String text, OptionalArgs optionalArgs) {
-        args.put("chat_id", String.valueOf(chatId));
+        this(String.valueOf(chatId),text,optionalArgs);
+    }
+
+    public SendMessageRequest(String chatId, String text, OptionalArgs optionalArgs) {
+        args.put("chat_id", chatId);
         args.put("text", text);
 
         if (optionalArgs != null)

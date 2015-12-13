@@ -238,7 +238,12 @@ abstract public class TelegramBot {
     public final Message sendMessage(int chatId, String text) {
         return requestExecutor.execute(api, new SendMessageRequest(chatId, text));
     }
-
+    /**
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendMessage(int, String, OptionalArgs)
+     */
+    public final Message sendMessage(String channelUsername, String text) {
+        return requestExecutor.execute(api, new SendMessageRequest(channelUsername, text));
+    }
     /**
      * Use this method to send text messages.
      *
@@ -381,6 +386,11 @@ abstract public class TelegramBot {
         return sendMessage(message.getChat().getId(), text, optionalArgs);
     }
 
+    /** set the webhook of the bot.
+     *
+     * @param servletAddress address of the servlet that handles the requests
+     * @return if the webhook is setted succesfully
+     */
     public final boolean setWebHook(String servletAddress){
         SetWebHookRequest request = new SetWebHookRequest(servletAddress);
         return requestExecutor.execute(api, request);
