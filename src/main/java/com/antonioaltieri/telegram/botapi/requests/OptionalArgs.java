@@ -1,5 +1,6 @@
 package com.antonioaltieri.telegram.botapi.requests;
 
+import com.antonioaltieri.telegram.botapi.types.ParseModes;
 import com.antonioaltieri.telegram.botapi.types.ReplyMarkup;
 
 import java.util.HashMap;
@@ -99,6 +100,13 @@ public class OptionalArgs {
 
     public OptionalArgs duration(int duration) {
         this.duration = duration;
+        return this;
+    }
+
+    public OptionalArgs parse_mode(ParseModes parse_mode) {
+        switch (parse_mode){
+            case MARKDOWN: this.parse_mode="Markdown"; break;
+        }
         return this;
     }
 
