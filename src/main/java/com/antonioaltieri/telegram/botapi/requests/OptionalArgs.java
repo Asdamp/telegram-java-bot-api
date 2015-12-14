@@ -103,7 +103,7 @@ public class OptionalArgs {
         return this;
     }
 
-    public OptionalArgs parse_mode(ParseModes parse_mode) {
+    public OptionalArgs parsMode(ParseModes parse_mode) {
         switch (parse_mode){
             case MARKDOWN: this.parse_mode="Markdown"; break;
         }
@@ -122,11 +122,6 @@ public class OptionalArgs {
 
     public OptionalArgs performer(String performer) {
         this.performer = performer;
-        return this;
-    }
-
-    public OptionalArgs parseMode(String parseMode) {
-        this.parse_mode = parseMode;
         return this;
     }
 }
