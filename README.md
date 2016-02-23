@@ -1,2 +1,2 @@
-# telegram-java-bot-api
+# Telegram Java bot API
 Work in progress
