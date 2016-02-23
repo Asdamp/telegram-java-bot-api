@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class User {
 
     @SerializedName("id")
-    private int id;
+    private long id;
 
     @SerializedName("first_name")
     private String firstName;
@@ -31,7 +31,7 @@ public class User {
 
     }
 
-    public User(int id, String firstName, String lastName, String username) {
+    public User(long id, String firstName, String lastName, String username) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class User {
     /**
      * @return Unique identifier for this user or bot
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 

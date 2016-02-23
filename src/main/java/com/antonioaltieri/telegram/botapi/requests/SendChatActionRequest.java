@@ -7,7 +7,7 @@ public class SendChatActionRequest implements ApiRequest<Boolean> {
 
     private Map<String, String> args = new HashMap<>();
 
-    public SendChatActionRequest(int chatId, ChatAction chatAction) {
+    public SendChatActionRequest(long chatId, ChatAction chatAction) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("action", chatAction.getAction());
     }

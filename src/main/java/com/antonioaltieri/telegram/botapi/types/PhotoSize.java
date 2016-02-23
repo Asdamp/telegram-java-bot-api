@@ -21,7 +21,7 @@ public class PhotoSize {
     private int height;
 
     @SerializedName("file_size")
-    private int fileSize = -1;
+    private long fileSize = -1;
 
     /**
      * @return Unique identifier for this file
@@ -49,7 +49,7 @@ public class PhotoSize {
      *
      * @return File size
      */
-    public int getFileSize() {
+    public long getFileSize() {
         return fileSize;
     }
 

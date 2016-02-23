@@ -21,7 +21,7 @@ public class Contact {
     private String lastName;
 
     @SerializedName("user_id")
-    private int userId;
+    private long userId;
 
     /**
      * @return Contact's phone number
@@ -51,7 +51,7 @@ public class Contact {
      *
      * @return Contact's user identifier in Telegram
      */
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 

@@ -31,7 +31,7 @@ public class Video {
     private String mimeType;
 
     @SerializedName("file_size")
-    private int fileSize;
+    private long fileSize;
 
     /**
      * @return Unique identifier for this file
@@ -84,7 +84,7 @@ public class Video {
      *
      * @return File size
      */
-    public int getFileSize() {
+    public long getFileSize() {
         return fileSize;
     }
 

@@ -19,7 +19,7 @@ abstract public class TelegramBot {
     private static final Logger logger = Logger.getLogger(TelegramBot.class.getName());
 
     private TelegramApi api;
-    private int lastUpdateId = 0;
+    private long lastUpdateId = 0;
     private ApiRequestExecutor requestExecutor;
     private HandlerNotifier handlerNotifier;
 
@@ -47,6 +47,7 @@ abstract public class TelegramBot {
         User bot=this.getMe();
         if(bot==null) throw new ApiException("Telegram is not responding. Please check that you have passed the correct botToken");
         Properties.BotUser=this.getMe();
+        logger.info("My name is: "+Properties.BotUser);
         onStart();
     }
 
@@ -75,7 +76,7 @@ abstract public class TelegramBot {
      * @param messageId Unique message identifier
      * @return The sent {@link Message}
      */
-    public final Message forwardMessage(int chatId, int fromChatId, int messageId) {
+    public final Message forwardMessage(long chatId, long fromChatId, long messageId) {
         return requestExecutor.execute(api, new ForwardMessageRequest(chatId, fromChatId, messageId));
     }
 
@@ -91,9 +92,9 @@ abstract public class TelegramBot {
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#getUserProfilePhotos(int, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#getUserProfilePhotos(long, OptionalArgs)
      */
-    public final UserProfilePhotos getUserProfilePhotos(int userId) {
+    public final UserProfilePhotos getUserProfilePhotos(long userId) {
         return requestExecutor.execute(api, new GetUserProfilePhotosRequest(userId));
     }
 
@@ -110,14 +111,14 @@ abstract public class TelegramBot {
      * @return The requested {@link UserProfilePhotos}
      */
     //TODO testare il caso in cui vengano inseirti optionalargs non pertinenti
-    public final UserProfilePhotos getUserProfilePhotos(int userId, OptionalArgs optionalArgs) {
+    public final UserProfilePhotos getUserProfilePhotos(long userId, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new GetUserProfilePhotosRequest(userId, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(long, File, OptionalArgs)
      */
-    public final Message sendAudio(int chatId, File audioFile) {
+    public final Message sendAudio(long chatId, File audioFile) {
         return requestExecutor.execute(api, new SendAudioRequest(chatId, audioFile));
     }
 
@@ -134,23 +135,23 @@ abstract public class TelegramBot {
      * @param optionalArgs Any optional arguments for this method
      * @return The sent {@link Message}
      */
-    public final Message sendAudio(int chatId, File audioFile, OptionalArgs optionalArgs) {
+    public final Message sendAudio(long chatId, File audioFile, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendAudioRequest(chatId, audioFile, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(int, String, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(long, String, OptionalArgs)
      */
-    public final Message sendAudio(int chatId, String audioFileId) {
+    public final Message sendAudio(long chatId, String audioFileId) {
         return requestExecutor.execute(api, new SendAudioRequest(chatId, audioFileId));
     }
 
     /**
      * This version takes a file id instead of a {@link File}, as a {@code String} argument.
      *
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(long, File, OptionalArgs)
      */
-    public final Message sendAudio(int chatId, String audioFileId, OptionalArgs optionalArgs) {
+    public final Message sendAudio(long chatId, String audioFileId, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendAudioRequest(chatId, audioFileId, optionalArgs));
     }
 
@@ -164,14 +165,14 @@ abstract public class TelegramBot {
      * @param chatAction The target {@link ChatAction}
      * @return True if the request was successful
      */
-    public final Boolean sendChatAction(int chatId, ChatAction chatAction) {
+    public final Boolean sendChatAction(long chatId, ChatAction chatAction) {
         return requestExecutor.execute(api, new SendChatActionRequest(chatId, chatAction));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendAudio(long, File, OptionalArgs)
      */
-    public final Message sendDocument(int chatId, File documentFile) {
+    public final Message sendDocument(long chatId, File documentFile) {
         return requestExecutor.execute(api, new SendDocumentRequest(chatId, documentFile));
     }
 
@@ -188,30 +189,30 @@ abstract public class TelegramBot {
      * @param optionalArgs Any optional arguments
      * @return The sent {@link Message}
      */
-    public final Message sendDocument(int chatId, File documentFile, OptionalArgs optionalArgs) {
+    public final Message sendDocument(long chatId, File documentFile, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendDocumentRequest(chatId, documentFile, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendDocument(int, String, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendDocument(long, String, OptionalArgs)
      */
-    public final Message sendDocument(int chatId, String documentFileId) {
+    public final Message sendDocument(long chatId, String documentFileId) {
         return requestExecutor.execute(api, new SendDocumentRequest(chatId, documentFileId));
     }
 
     /**
      * This version takes a file id instead of a {@link File}.
      *
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendDocument(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendDocument(long, File, OptionalArgs)
      */
-    public final Message sendDocument(int chatId, String documentFileId, OptionalArgs optionalArgs) {
+    public final Message sendDocument(long chatId, String documentFileId, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendDocumentRequest(chatId, documentFileId, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendLocation(int, float, float, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendLocation(long, float, float, OptionalArgs)
      */
-    public final Message sendLocation(int chatId, float latitude, float longitude) {
+    public final Message sendLocation(long chatId, float latitude, float longitude) {
         return requestExecutor.execute(api, new SendLocationRequest(chatId, latitude, longitude));
     }
 
@@ -228,18 +229,18 @@ abstract public class TelegramBot {
      * @param optionalArgs Any optional arguments
      * @return the sent {@link Message}
      */
-    public final Message sendLocation(int chatId, float latitude, float longitude, OptionalArgs optionalArgs) {
+    public final Message sendLocation(long chatId, float latitude, float longitude, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendLocationRequest(chatId, latitude, longitude, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendMessage(int, String, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendMessage(long, String, OptionalArgs)
      */
-    public final Message sendMessage(int chatId, String text) {
+    public final Message sendMessage(long chatId, String text) {
         return requestExecutor.execute(api, new SendMessageRequest(chatId, text));
     }
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendMessage(int, String, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendMessage(long, String, OptionalArgs)
      */
     public final Message sendMessage(String channelUsername, String text) {
         return requestExecutor.execute(api, new SendMessageRequest(channelUsername, text));
@@ -256,14 +257,19 @@ abstract public class TelegramBot {
      * @param optionalArgs Any optional arguments
      * @return the sent {@link Message}
      */
-    public final Message sendMessage(int chatId, String text, OptionalArgs optionalArgs) {
+    public final Message sendMessage(long chatId, String text, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendMessageRequest(chatId, text, optionalArgs));
     }
-
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(long, File, OptionalArgs)
      */
-    public final Message sendPhoto(int chatId, File photoFile) {
+    public final Message sendMessage(String chatId, String text, OptionalArgs optionalArgs) {
+        return requestExecutor.execute(api, new SendMessageRequest(chatId, text, optionalArgs));
+    }
+    /**
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(long, File, OptionalArgs)
+     */
+    public final Message sendPhoto(long chatId, File photoFile) {
         return requestExecutor.execute(api, new SendPhotoRequest(chatId, photoFile));
     }
 
@@ -277,30 +283,30 @@ abstract public class TelegramBot {
      * @param optionalArgs Any optional arguments
      * @return The sent {@link Message}
      */
-    public final Message sendPhoto(int chatId, File photoFile, OptionalArgs optionalArgs) {
+    public final Message sendPhoto(long chatId, File photoFile, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendPhotoRequest(chatId, photoFile, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(int, String, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(long, String, OptionalArgs)
      */
-    public final Message sendPhoto(int chatId, String photoFileId) {
+    public final Message sendPhoto(long chatId, String photoFileId) {
         return requestExecutor.execute(api, new SendPhotoRequest(chatId, photoFileId));
     }
 
     /**
      * This version takes a file id instead of a {@link File}
      *
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendPhoto(long, File, OptionalArgs)
      */
-    public final Message sendPhoto(int chatId, String photoFileId, OptionalArgs optionalArgs) {
+    public final Message sendPhoto(long chatId, String photoFileId, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendPhotoRequest(chatId, photoFileId, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendSticker(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendSticker(long, File, OptionalArgs)
      */
-    public final Message sendSticker(int chatId, File stickerFile) {
+    public final Message sendSticker(long chatId, File stickerFile) {
         return requestExecutor.execute(api, new SendStickerRequest(chatId, stickerFile));
     }
 
@@ -316,36 +322,36 @@ abstract public class TelegramBot {
      * @param optionalArgs Any optional arguments
      * @return The sent {@link Message}
      */
-    public final Message sendSticker(int chatId, File stickerFile, OptionalArgs optionalArgs) {
+    public final Message sendSticker(long chatId, File stickerFile, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendStickerRequest(chatId, stickerFile, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendSticker(int, String, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendSticker(long, String, OptionalArgs)
      */
-    public final Message sendSticker(int chatId, String stickerFileId) {
+    public final Message sendSticker(long chatId, String stickerFileId) {
         return requestExecutor.execute(api, new SendStickerRequest(chatId, stickerFileId));
     }
 
     /**
      * This version takes a file id instead of a {@link File}.
      *
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendSticker(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendSticker(long, File, OptionalArgs)
      */
-    public final Message sendSticker(int chatId, String stickerFileId, OptionalArgs optionalArgs) {
+    public final Message sendSticker(long chatId, String stickerFileId, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendStickerRequest(chatId, stickerFileId, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendVideo(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendVideo(long, File, OptionalArgs)
      */
-    public final Message sendVideo(int chatId, File videoFile) {
+    public final Message sendVideo(long chatId, File videoFile) {
         return requestExecutor.execute(api, new SendVideoRequest(chatId, videoFile));
     }
 
     /**
      * Use this method to send video files,
-     * Telegram clients support mp4 videos (other formats may be sent as Document ({@link com.antonioaltieri.telegram.botapi.TelegramBot#sendDocument(int, File, OptionalArgs)})).
+     * Telegram clients support mp4 videos (other formats may be sent as Document ({@link com.antonioaltieri.telegram.botapi.TelegramBot#sendDocument(long, File, OptionalArgs)})).
      * Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
      *
      * For any optional arguments, refer to the Telegram documentation.
@@ -358,23 +364,23 @@ abstract public class TelegramBot {
      * @return The sent {@link Message}
      */
     //TODO Controllare cosa succede se si invia un file di tipo diverso da quello richiesto. es. foto con sendvideo, oppure un video non mp4
-    public final Message sendVideo(int chatId, File videoFile, OptionalArgs optionalArgs) {
+    public final Message sendVideo(long chatId, File videoFile, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendVideoRequest(chatId, videoFile, optionalArgs));
     }
 
     /**
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendVideo(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendVideo(long, File, OptionalArgs)
      */
-    public final Message sendVideo(int chatId, String videoFileId) {
+    public final Message sendVideo(long chatId, String videoFileId) {
         return requestExecutor.execute(api, new SendVideoRequest(chatId, videoFileId));
     }
 
     /**
      * This version uses a file id rather than a {@link File}
      *
-     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendVideo(int, File, OptionalArgs)
+     * @see com.antonioaltieri.telegram.botapi.TelegramBot#sendVideo(long, File, OptionalArgs)
      */
-    public final Message sendVideo(int chatId, String videoFileId, OptionalArgs optionalArgs) {
+    public final Message sendVideo(long chatId, String videoFileId, OptionalArgs optionalArgs) {
         return requestExecutor.execute(api, new SendVideoRequest(chatId, videoFileId, optionalArgs));
     }
 

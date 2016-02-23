@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class Chat {
 
     @SerializedName("id")
-    private int id;
+    private long id;
 
     @SerializedName("first_name")
     private String firstName;
@@ -53,7 +53,7 @@ public class Chat {
     /**
      * @return Unique identifier for this chat
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 

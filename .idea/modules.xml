@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/telegram-java-bot-api.iml" filepath="$PROJECT_DIR$/telegram-java-bot-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/telegramjavabotapi.iml" filepath="$PROJECT_DIR$/telegramjavabotapi.iml" />
     </modules>
   </component>
 </project>

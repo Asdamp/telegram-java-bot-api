@@ -11,11 +11,11 @@ public class SendDocumentRequest implements ApiRequest<Message> {
     private Map<String, String> args = new HashMap<>();
     private RequestStrategy requestStrategy;
 
-    public SendDocumentRequest(int chatId, File document) {
+    public SendDocumentRequest(long chatId, File document) {
         this(chatId, document, null);
     }
 
-    public SendDocumentRequest(int chatId, File document, OptionalArgs optionalArgs) {
+    public SendDocumentRequest(long chatId, File document, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
 
         if (optionalArgs != null)
@@ -24,11 +24,11 @@ public class SendDocumentRequest implements ApiRequest<Message> {
         requestStrategy = new MultipartStrategy(document, "document");
     }
 
-    public SendDocumentRequest(int chatId, String document) {
+    public SendDocumentRequest(long chatId, String document) {
         this(chatId, document, null);
     }
 
-    public SendDocumentRequest(int chatId, String document, OptionalArgs optionalArgs) {
+    public SendDocumentRequest(long chatId, String document, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("document", document);
 

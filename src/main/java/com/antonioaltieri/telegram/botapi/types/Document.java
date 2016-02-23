@@ -26,7 +26,7 @@ public class Document {
     private String mimeType;
 
     @SerializedName("file_size")
-    private int fileSize;
+    private long fileSize;
 
     /**
      * @return Unique file identifier
@@ -67,7 +67,7 @@ public class Document {
      *
      * @return File size of this document
      */
-    public int getFileSize() {
+    public long getFileSize() {
         return fileSize;
     }
 

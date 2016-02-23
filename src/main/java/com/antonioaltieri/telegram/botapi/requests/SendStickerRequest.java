@@ -11,11 +11,11 @@ public class SendStickerRequest implements ApiRequest<Message> {
     private Map<String, String> args = new HashMap<>();
     private RequestStrategy requestStrategy;
 
-    public SendStickerRequest(int chatId, File sticker) {
+    public SendStickerRequest(long chatId, File sticker) {
         this(chatId, sticker, null);
     }
 
-    public SendStickerRequest(int chatId, File sticker, com.antonioaltieri.telegram.botapi.requests.OptionalArgs optionalArgs) {
+    public SendStickerRequest(long chatId, File sticker, com.antonioaltieri.telegram.botapi.requests.OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
 
         if (optionalArgs != null)
@@ -24,11 +24,11 @@ public class SendStickerRequest implements ApiRequest<Message> {
         requestStrategy = new MultipartStrategy(sticker, "sticker");
     }
 
-    public SendStickerRequest(int chatId, String sticker) {
+    public SendStickerRequest(long chatId, String sticker) {
         this(chatId, sticker, null);
     }
 
-    public SendStickerRequest(int chatId, String sticker, OptionalArgs optionalArgs) {
+    public SendStickerRequest(long chatId, String sticker, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("sticker", sticker);
 

@@ -11,11 +11,11 @@ public class SendAudioRequest implements ApiRequest<Message> {
     private Map<String, String> args = new HashMap<>();
     private RequestStrategy requestStrategy;
 
-    public SendAudioRequest(int chatId, File audioFile) {
+    public SendAudioRequest(long chatId, File audioFile) {
         this(chatId, audioFile, null);
     }
 
-    public SendAudioRequest(int chatId, File audioFile, com.antonioaltieri.telegram.botapi.requests.OptionalArgs optionalArgs) {
+    public SendAudioRequest(long chatId, File audioFile, com.antonioaltieri.telegram.botapi.requests.OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
 
         if (optionalArgs != null)
@@ -24,11 +24,11 @@ public class SendAudioRequest implements ApiRequest<Message> {
         requestStrategy = new MultipartStrategy(audioFile, "audio");
     }
 
-    public SendAudioRequest(int chatId, String audioString) {
+    public SendAudioRequest(long chatId, String audioString) {
         this(chatId, audioString, null);
     }
 
-    public SendAudioRequest(int chatId, String audioString, OptionalArgs optionalArgs) {
+    public SendAudioRequest(long chatId, String audioString, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("audio", audioString);
 

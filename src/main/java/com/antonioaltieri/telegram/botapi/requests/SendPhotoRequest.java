@@ -11,11 +11,11 @@ public class SendPhotoRequest implements ApiRequest<Message> {
     private Map<String, String> args = new HashMap<>();
     private RequestStrategy requestStrategy;
 
-    public SendPhotoRequest(int chatId, File photo) {
+    public SendPhotoRequest(long chatId, File photo) {
         this(chatId, photo, null);
     }
 
-    public SendPhotoRequest(int chatId, File photo, com.antonioaltieri.telegram.botapi.requests.OptionalArgs optionalArgs) {
+    public SendPhotoRequest(long chatId, File photo, com.antonioaltieri.telegram.botapi.requests.OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
 
         if (optionalArgs != null)
@@ -24,11 +24,11 @@ public class SendPhotoRequest implements ApiRequest<Message> {
         requestStrategy = new MultipartStrategy(photo, "photo");
     }
 
-    public SendPhotoRequest(int chatId, String photo) {
+    public SendPhotoRequest(long chatId, String photo) {
         this(chatId, photo, null);
     }
 
-    public SendPhotoRequest(int chatId, String photo, OptionalArgs optionalArgs) {
+    public SendPhotoRequest(long chatId, String photo, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("photo", photo);
 

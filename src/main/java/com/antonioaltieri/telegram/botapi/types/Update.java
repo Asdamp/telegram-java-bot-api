@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class Update {
 
     @SerializedName("update_id")
-    private int updateId;
+    private long updateId;
 
     @SerializedName("message")
     private com.antonioaltieri.telegram.botapi.types.Message message;
@@ -23,7 +23,7 @@ public class Update {
      * Update identifiers start from a certain positive number and increase sequentially.
      * This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order.
      */
-    public int getUpdateId() {
+    public long getUpdateId() {
         return updateId;
     }
 

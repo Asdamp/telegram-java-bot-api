@@ -9,11 +9,11 @@ public class SendLocationRequest implements ApiRequest<Message> {
 
     private Map<String, String> args = new HashMap<>();
 
-    public SendLocationRequest(int chatId, float latitude, float longitude) {
+    public SendLocationRequest(long chatId, float latitude, float longitude) {
         this(chatId, latitude, longitude, null);
     }
 
-    public SendLocationRequest(int chatId, float latitude, float longitude, OptionalArgs optionalArgs) {
+    public SendLocationRequest(long chatId, float latitude, float longitude, OptionalArgs optionalArgs) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("latitude", String.valueOf(latitude));
         args.put("longitude", String.valueOf(longitude));

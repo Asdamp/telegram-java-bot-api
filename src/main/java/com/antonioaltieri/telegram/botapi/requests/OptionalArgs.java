@@ -106,6 +106,8 @@ public class OptionalArgs {
     public OptionalArgs parsMode(ParseModes parse_mode) {
         switch (parse_mode){
             case MARKDOWN: this.parse_mode="Markdown"; break;
+            case HTML: this.parse_mode="HTML"; break;
+
         }
         return this;
     }

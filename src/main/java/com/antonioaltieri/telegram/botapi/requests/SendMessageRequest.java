@@ -9,7 +9,7 @@ public final class SendMessageRequest implements ApiRequest<Message> {
 
     private Map<String, String> args = new HashMap<>();
 
-    public SendMessageRequest(int chatId, String text) {
+    public SendMessageRequest(long chatId, String text) {
         this(chatId, text, null);
     }
 
@@ -17,7 +17,7 @@ public final class SendMessageRequest implements ApiRequest<Message> {
         this(chatId, text, null);
     }
 
-    public SendMessageRequest(int chatId, String text, OptionalArgs optionalArgs) {
+    public SendMessageRequest(long chatId, String text, OptionalArgs optionalArgs) {
         this(String.valueOf(chatId),text,optionalArgs);
     }
 

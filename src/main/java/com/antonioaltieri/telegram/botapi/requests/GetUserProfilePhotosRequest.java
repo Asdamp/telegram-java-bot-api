@@ -9,11 +9,11 @@ public class GetUserProfilePhotosRequest implements ApiRequest<UserProfilePhotos
 
     private Map<String, String> args = new HashMap<>();
 
-    public GetUserProfilePhotosRequest(int userId) {
+    public GetUserProfilePhotosRequest(long userId) {
         this(userId, null);
     }
 
-    public GetUserProfilePhotosRequest(int userId, OptionalArgs optionalArgs) {
+    public GetUserProfilePhotosRequest(long userId, OptionalArgs optionalArgs) {
         args.put("user_id", String.valueOf(userId));
 
         if (optionalArgs != null)

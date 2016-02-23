@@ -130,7 +130,7 @@ public class HandlerNotifier {
                 String target=null;
                 if(cmdTrg.length>=2) target=cmdTrg[1];
                 if(target==null || target.equalsIgnoreCase(Properties.BotUser.getUsername()))
-                return cmd;
+                    return cmd;
             }
             return null;
         }

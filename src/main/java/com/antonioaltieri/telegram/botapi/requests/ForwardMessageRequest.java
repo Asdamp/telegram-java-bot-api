@@ -9,7 +9,7 @@ public class ForwardMessageRequest implements ApiRequest<Message> {
 
     private Map<String, String> args = new HashMap<>();
 
-    public ForwardMessageRequest(int chatId, int fromChatId, int messageId) {
+    public ForwardMessageRequest(long chatId, long fromChatId, long messageId) {
         args.put("chat_id", String.valueOf(chatId));
         args.put("from_chat_id", String.valueOf(fromChatId));
         args.put("message_id", String.valueOf(messageId));
