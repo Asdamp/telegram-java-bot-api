@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
  *
  * Any getters labeled <i>optional</i> might return a default value (such as {@code null}).
  *
- * @see <a href="https://core.telegram.org/bots/api#document>https://core.telegram.org/bots/api#document</a>
  */
 public class Document {
 

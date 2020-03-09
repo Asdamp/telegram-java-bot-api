@@ -1,6 +1,7 @@
 package com.antonioaltieri.telegram.botapi.requests;
 
 import com.antonioaltieri.telegram.botapi.types.Message;
+import com.antonioaltieri.telegram.botapi.types.ParseModes;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +24,17 @@ public final class SendMessageRequest implements ApiRequest<Message> {
 
     public SendMessageRequest(String chatId, String text, OptionalArgs optionalArgs) {
         args.put("chat_id", chatId);
+        if(text.length()> 4096)
+            text=text.substring(0,4090);
+        if(text.contains("<") && !text.contains(">"))
+            text=text.replace("<", " " );
         args.put("text", text);
 
-        if (optionalArgs != null)
+        if (optionalArgs != null) {
             args.putAll(optionalArgs.options());
+
+        }
+
     }
 
     @Override

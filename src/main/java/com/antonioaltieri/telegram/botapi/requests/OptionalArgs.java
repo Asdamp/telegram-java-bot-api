@@ -104,6 +104,10 @@ public class OptionalArgs {
     }
 
     public OptionalArgs parsMode(ParseModes parse_mode) {
+        if(parse_mode==null) {
+            this.parse_mode = null;
+            return this;
+        }
         switch (parse_mode){
             case MARKDOWN: this.parse_mode="Markdown"; break;
             case HTML: this.parse_mode="HTML"; break;

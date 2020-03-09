@@ -11,7 +11,6 @@ import com.google.gson.annotations.SerializedName;
  *
  * See {@link OptionalArgs} to see how to pass this class as an argument.
  *
- * @see <a href="https://core.telegram.org/bots/api#forcereply>https://core.telegram.org/bots/api#forcereply</a>
  */
 public class ForceReply implements ReplyMarkup {
 

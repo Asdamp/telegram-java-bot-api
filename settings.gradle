@@ -1,2 +1,3 @@
 rootProject.name = 'telegram-java-bot-api'
 
+enableFeaturePreview('STABLE_PUBLISHING')
